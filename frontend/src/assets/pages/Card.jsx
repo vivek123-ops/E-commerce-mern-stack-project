@@ -9,7 +9,7 @@ const Cart = () => {
   const getCart = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/checklogin",
+        "https://e-commerce-mern-stack-project-2.onrender.com/api/checklogin",
         {},
         {
           headers: {
@@ -29,7 +29,7 @@ const Cart = () => {
   const totalPrice = async (e) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/checklogin",
+        "https://e-commerce-mern-stack-project-2.onrender.com/api/checklogin",
         {},
         {
           headers: {
@@ -46,11 +46,14 @@ const Cart = () => {
 
   const deleteCart = async (productId) => {
     try {
-      await axios.delete(`http://localhost:3000/api/deletecard/${productId}`, {
-        headers: {
-          Authorization: token,
+      await axios.delete(
+        `https://e-commerce-mern-stack-project-2.onrender.com/api/deletecard/${productId}`,
+        {
+          headers: {
+            Authorization: token,
+          },
         },
-      });
+      );
 
       getCart();
       totalPrice();

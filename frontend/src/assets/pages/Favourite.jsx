@@ -9,7 +9,7 @@ const Favourite = () => {
   const getFavourite = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/checklogin",
+        "https://e-commerce-mern-stack-project-2.onrender.com/api/checklogin",
         {},
         {
           headers: {

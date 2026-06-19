@@ -7,7 +7,9 @@ const HomePage = () => {
   const [product, setproduct] = useState([]);
   const getProduct = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/getProduct");
+      const res = await axios.get(
+        "https://e-commerce-mern-stack-project-2.onrender.com/api/getProduct",
+      );
       setproduct(res.data.allProduct);
     } catch (error) {
       alert(error.response?.data?.message || "Server not responding");

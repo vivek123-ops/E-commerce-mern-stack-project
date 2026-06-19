@@ -15,12 +15,15 @@ const Verify = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/api/verify-otp", {
-        userName: userName,
-        email: email,
-        password: password,
-        providedOtp: otpRef.current.value,
-      });
+      const res = await axios.post(
+        "https://e-commerce-mern-stack-project-2.onrender.com/api/verify-otp",
+        {
+          userName: userName,
+          email: email,
+          password: password,
+          providedOtp: otpRef.current.value,
+        },
+      );
       alert(res.data.message);
       navigate("/login");
     } catch (error) {

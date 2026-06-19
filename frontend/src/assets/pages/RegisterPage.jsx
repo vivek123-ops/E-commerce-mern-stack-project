@@ -14,12 +14,15 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/api/register", {
-        userName: nameRef.current.value,
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
-        role: roleref.current.value,
-      });
+      const res = await axios.post(
+        "https://e-commerce-mern-stack-project-2.onrender.com/api/register",
+        {
+          userName: nameRef.current.value,
+          email: emailRef.current.value,
+          password: passwordRef.current.value,
+          role: roleref.current.value,
+        },
+      );
 
       alert(res.data.message);
 

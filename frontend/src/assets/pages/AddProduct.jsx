@@ -30,7 +30,7 @@ const AddProduct = () => {
       formData.append("image", imageRef.current.files[0]);
 
       const res = await axios.post(
-        "http://localhost:3000/api/upload-post",
+        "https://e-commerce-mern-stack-project-2.onrender.com/api/upload-post",
         formData,
         {
           headers: {

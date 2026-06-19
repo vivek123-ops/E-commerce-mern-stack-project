@@ -10,10 +10,13 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/login", {
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
-      });
+      const res = await axios.post(
+        "https://e-commerce-mern-stack-project-2.onrender.com/api/login",
+        {
+          email: emailRef.current.value,
+          password: passwordRef.current.value,
+        },
+      );
       localStorage.setItem("token", res.data.token);
       alert(res.data.message);
       navigate("/");
