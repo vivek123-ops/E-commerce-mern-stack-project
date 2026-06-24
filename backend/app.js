@@ -18,7 +18,9 @@ app.use("/api", Admin);
 
 const serverStart = async () => {
   try {
-    await mongoose.connect(process.env.DB_URL);
+    await mongoose.connect(
+      "mongodb+srv://vivekshrivastav325_db_user:root@cluster0.gyqai2p.mongodb.net/?appName=Cluster0",
+    );
     console.log("backed is connected");
     app.listen(3000, () => {
       console.log("server is connected");
