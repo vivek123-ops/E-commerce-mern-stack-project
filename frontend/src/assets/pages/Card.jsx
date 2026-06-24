@@ -71,79 +71,129 @@ const Cart = () => {
   return (
     <div
       style={{
+        minHeight: "100vh",
+        backgroundColor: "#f5f5f5",
         padding: "30px",
-        maxWidth: "1200px",
-        margin: "auto",
       }}
     >
-      <h1>My Cart</h1>
+      <h1
+        style={{
+          textAlign: "center",
+          marginBottom: "30px",
+          color: "#131921",
+        }}
+      >
+        🛒 My Shopping Cart
+      </h1>
 
       {cart.length === 0 ? (
-        <h2>Cart is Empty</h2>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "100px",
+            background: "white",
+            padding: "40px",
+            borderRadius: "15px",
+            boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+          }}
+        >
+          <h2>🛍️ Your Cart is Empty</h2>
+          <p>Add some products to start shopping</p>
+        </div>
       ) : (
-        <>
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "auto",
+          }}
+        >
           {cart.map((item) => (
             <div
               key={item.productId._id}
               style={{
                 display: "flex",
-                gap: "20px",
-                border: "1px solid #ddd",
-                borderRadius: "10px",
-                padding: "15px",
-                marginBottom: "20px",
                 alignItems: "center",
+                gap: "25px",
+                background: "white",
+                borderRadius: "15px",
+                padding: "20px",
+                marginBottom: "20px",
+                boxShadow: "0 3px 12px rgba(0,0,0,0.1)",
               }}
             >
               <img
                 src={item.productId.photourl}
                 alt={item.productId.productName}
                 style={{
-                  width: "150px",
-                  height: "150px",
+                  width: "180px",
+                  height: "180px",
                   objectFit: "cover",
                   borderRadius: "10px",
                 }}
               />
 
-              <div style={{ flex: 1 }}>
-                <h2>{item.productId.productName}</h2>
+              <div
+                style={{
+                  flex: 1,
+                }}
+              >
+                <h2
+                  style={{
+                    marginBottom: "10px",
+                  }}
+                >
+                  {item.productId.productName}
+                </h2>
 
-                <p>{item.productId.description}</p>
-
-                <p>
-                  Category:
-                  {item.productId.category}
+                <p
+                  style={{
+                    color: "#555",
+                    marginBottom: "10px",
+                  }}
+                >
+                  {item.productId.description}
                 </p>
 
                 <p>
-                  Rating:
-                  {item.productId.rating} ⭐
+                  <strong>Category:</strong> {item.productId.category}
                 </p>
 
-                <h3>₹{item.productId.price}</h3>
+                <p>
+                  <strong>Rating:</strong> {item.productId.rating} ⭐
+                </p>
 
                 <p>
-                  Quantity:
-                  {item.quantity}
+                  <strong>Quantity:</strong> {item.quantity}
                 </p>
               </div>
 
-              <div>
-                <h2>₹{item.productId.price}</h2>
+              <div
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                <h2
+                  style={{
+                    color: "green",
+                    marginBottom: "15px",
+                  }}
+                >
+                  ₹{item.productId.price}
+                </h2>
 
                 <button
+                  onClick={() => deleteCart(item.productId._id)}
                   style={{
-                    padding: "10px",
-                    background: "red",
+                    padding: "12px 20px",
+                    background: "#dc3545",
                     color: "white",
                     border: "none",
-                    borderRadius: "5px",
+                    borderRadius: "8px",
                     cursor: "pointer",
+                    fontWeight: "bold",
                   }}
-                  onClick={() => deleteCart(item.productId._id)}
                 >
-                  Remove
+                  🗑 Remove
                 </button>
               </div>
             </div>
@@ -151,27 +201,39 @@ const Cart = () => {
 
           <div
             style={{
+              background: "white",
+              padding: "30px",
+              borderRadius: "15px",
+              boxShadow: "0 3px 12px rgba(0,0,0,0.1)",
               textAlign: "right",
               marginTop: "30px",
             }}
           >
-            <h1>Total: ₹{totalprice}</h1>
+            <h1
+              style={{
+                color: "#131921",
+                marginBottom: "20px",
+              }}
+            >
+              Total: ₹{totalprice}
+            </h1>
 
             <button
               style={{
-                padding: "12px 25px",
-                background: "green",
+                padding: "15px 35px",
+                background: "#28a745",
                 color: "white",
                 border: "none",
-                borderRadius: "8px",
+                borderRadius: "10px",
                 cursor: "pointer",
                 fontSize: "18px",
+                fontWeight: "bold",
               }}
             >
-              Checkout
+              Proceed To Checkout
             </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

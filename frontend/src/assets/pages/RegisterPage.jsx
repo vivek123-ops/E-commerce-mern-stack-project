@@ -42,30 +42,58 @@ const Register = () => {
   return (
     <div
       style={{
-        height: "100vh",
+        minHeight: "100vh",
+        background:
+          "linear-gradient(135deg, #131921 0%, #232f3e 50%, #37475a 100%)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "#f2f2f2",
+        padding: "20px",
       }}
     >
       <form
         onSubmit={handleRegister}
         style={{
-          width: "350px",
-          background: "white",
+          width: "420px",
+          background: "rgba(255,255,255,0.1)",
+          backdropFilter: "blur(10px)",
           padding: "40px",
-          borderRadius: "10px",
-          boxShadow: "0 0 10px gray",
+          borderRadius: "20px",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+          border: "1px solid rgba(255,255,255,0.2)",
         }}
       >
-        <h2
+        <div
           style={{
             textAlign: "center",
+            marginBottom: "25px",
           }}
         >
-          Register
-        </h2>
+          <h1
+            style={{
+              color: "white",
+              marginBottom: "10px",
+            }}
+          >
+            🛒 ShopSphere
+          </h1>
+
+          <h2
+            style={{
+              color: "white",
+            }}
+          >
+            Create Account
+          </h2>
+
+          <p
+            style={{
+              color: "#d1d5db",
+            }}
+          >
+            Join us and start shopping today
+          </p>
+        </div>
 
         <input
           ref={nameRef}
@@ -73,8 +101,11 @@ const Register = () => {
           placeholder="Enter Name"
           style={{
             width: "100%",
-            padding: "12px",
-            margin: "15px 0",
+            padding: "14px",
+            marginBottom: "15px",
+            borderRadius: "10px",
+            border: "none",
+            outline: "none",
             boxSizing: "border-box",
           }}
         />
@@ -85,8 +116,11 @@ const Register = () => {
           placeholder="Enter Email"
           style={{
             width: "100%",
-            padding: "12px",
+            padding: "14px",
             marginBottom: "15px",
+            borderRadius: "10px",
+            border: "none",
+            outline: "none",
             boxSizing: "border-box",
           }}
         />
@@ -97,34 +131,43 @@ const Register = () => {
           placeholder="Enter Password"
           style={{
             width: "100%",
-            padding: "12px",
+            padding: "14px",
             marginBottom: "15px",
+            borderRadius: "10px",
+            border: "none",
+            outline: "none",
             boxSizing: "border-box",
           }}
         />
 
         <select
-          value={roleref}
           ref={roleref}
+          defaultValue="user"
           style={{
             width: "100%",
-            padding: "12px",
+            padding: "14px",
             marginBottom: "20px",
+            borderRadius: "10px",
+            border: "none",
+            outline: "none",
             boxSizing: "border-box",
           }}
         >
           <option value="user">User</option>
-
           <option value="admin">Admin</option>
         </select>
 
         <button
+          type="submit"
           style={{
             width: "100%",
-            padding: "12px",
-            background: "#131921",
+            padding: "14px",
+            background: "#ff9900",
             color: "white",
             border: "none",
+            borderRadius: "10px",
+            fontSize: "16px",
+            fontWeight: "bold",
             cursor: "pointer",
           }}
         >
@@ -134,16 +177,18 @@ const Register = () => {
         <p
           style={{
             textAlign: "center",
-            marginTop: "15px",
+            color: "white",
+            marginTop: "20px",
           }}
         >
-          Already have account?
+          Already have an account?
           <span
             onClick={() => navigate("/login")}
             style={{
-              color: "blue",
+              color: "#ff9900",
               marginLeft: "5px",
               cursor: "pointer",
+              fontWeight: "bold",
             }}
           >
             Login

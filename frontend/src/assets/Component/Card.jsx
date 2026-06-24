@@ -139,22 +139,23 @@ const ProductCard = ({
   return (
     <div
       style={{
-        width: "280px",
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-        padding: "15px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        width: "260px",
         background: "white",
+        borderRadius: "15px",
+        overflow: "hidden",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+        transition: "0.3s",
       }}
     >
       {/* Product Image */}
       <div
         style={{
-          height: "200px",
-          background: "#f2f2f2",
-          borderRadius: "8px",
-          overflow: "hidden",
-          marginBottom: "10px",
+          height: "180px",
+          background: "#f8f9fa",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "10px",
         }}
       >
         <img
@@ -163,63 +164,101 @@ const ProductCard = ({
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "contain",
           }}
         />
       </div>
 
-      <h3>{productName}</h3>
-
-      <p
-        style={{
-          color: "#666",
-          fontSize: "14px",
-        }}
-      >
-        {description}
-      </p>
-
-      <p>
-        <strong>Category:</strong> {category}
-      </p>
-
-      <p>⭐ {rating}</p>
-
-      <h2
-        style={{
-          color: "green",
-        }}
-      >
-        ₹{price}
-      </h2>
-
+      {/* Product Details */}
       <div
         style={{
-          display: "flex",
-          gap: "10px",
-          marginTop: "10px",
+          padding: "15px",
         }}
       >
+        <h3
+          style={{
+            margin: "0",
+            fontSize: "18px",
+            color: "#131921",
+            marginBottom: "8px",
+          }}
+        >
+          {productName}
+        </h3>
+
+        <p
+          style={{
+            color: "#666",
+            fontSize: "13px",
+            minHeight: "40px",
+            marginBottom: "10px",
+          }}
+        >
+          {description.length > 50
+            ? description.slice(0, 50) + "..."
+            : description}
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "10px",
+          }}
+        >
+          <span
+            style={{
+              background: "#f1f3f6",
+              padding: "4px 8px",
+              borderRadius: "12px",
+              fontSize: "12px",
+              color: "#333",
+            }}
+          >
+            {category}
+          </span>
+
+          <span
+            style={{
+              color: "#ff9800",
+              fontWeight: "bold",
+              fontSize: "14px",
+            }}
+          >
+            ⭐ {rating}
+          </span>
+        </div>
+
+        <h2
+          style={{
+            color: "#28a745",
+            fontSize: "24px",
+            margin: "10px 0",
+          }}
+        >
+          ₹{price}
+        </h2>
+
         {role === "user" && (
           <div
             style={{
               display: "flex",
-              gap: "10px",
-              marginTop: "10px",
+              flexDirection: "column",
+              gap: "8px",
             }}
           >
             <button
               onClick={addCart}
               style={{
-                padding: "10px 16px",
+                padding: "10px",
                 background: card ? "#dc3545" : "#131921",
                 color: "white",
                 border: "none",
                 borderRadius: "8px",
-                fontWeight: "bold",
                 cursor: "pointer",
-                width: "auto",
-                minWidth: "120px",
+                fontSize: "14px",
+                fontWeight: "bold",
               }}
             >
               {card ? "🗑 Remove" : "🛒 Add Cart"}
@@ -228,15 +267,14 @@ const ProductCard = ({
             <button
               onClick={addFavourite}
               style={{
-                padding: "10px 16px",
+                padding: "10px",
                 background: favourite ? "#28a745" : "#ff4757",
                 color: "white",
                 border: "none",
                 borderRadius: "8px",
-                fontWeight: "bold",
                 cursor: "pointer",
-                width: "auto",
-                minWidth: "140px",
+                fontSize: "14px",
+                fontWeight: "bold",
               }}
             >
               {favourite ? "❤️ Remove" : "🤍 Favourite"}
@@ -248,8 +286,7 @@ const ProductCard = ({
           <div
             style={{
               display: "flex",
-              gap: "10px",
-              marginTop: "10px",
+              gap: "8px",
             }}
           >
             <button
@@ -257,28 +294,29 @@ const ProductCard = ({
                 flex: 1,
                 padding: "10px",
                 background: "#ffc107",
-                color: "black",
                 border: "none",
-                borderRadius: "5px",
+                borderRadius: "8px",
                 cursor: "pointer",
+                fontWeight: "bold",
               }}
             >
-              Edit
+              ✏️ Edit
             </button>
 
             <button
+              onClick={deleteProduct}
               style={{
                 flex: 1,
                 padding: "10px",
                 background: "#dc3545",
                 color: "white",
                 border: "none",
-                borderRadius: "5px",
+                borderRadius: "8px",
                 cursor: "pointer",
+                fontWeight: "bold",
               }}
-              onClick={deleteProduct}
             >
-              Delete
+              🗑 Delete
             </button>
           </div>
         )}
