@@ -145,7 +145,7 @@ const Header = () => {
               style={{
                 padding: "10px 20px",
                 background: "#ff9900",
-                border: "none",
+                borderRadius: "5px",
                 cursor: "pointer",
               }}
             >
@@ -158,7 +158,8 @@ const Header = () => {
             style={{
               padding: "10px 20px",
               background: "#ff9900",
-              border: "none",
+              border: "4px",
+              color: "white",
               cursor: "pointer",
             }}
           >
